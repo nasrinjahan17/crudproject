@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="col-sm-10 m-auto">
+    <h4 class="text-center alert alert-primary">Student Information</h4>
+{% if all_info %}
+    <table class="table table-hover table-warning ">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Class</th>
+            <th scope="col">Password</th>
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        {% for all in all_info %}
+        <tbody>
+        <tr>
+            <th scope="row">{{ all.id }}</th>
+            <td>{{ all.name }}</td>
+            <td>{{ all.email }}</td>
+            <td>{{ all.class_no }}</td>
+            <td>{{ all.password }}</td>
+            <td>
+                <a href="{% url 'editdata' all.id %}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{% url 'delete' all.id %}" class="btn btn-danger btn-sm">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+        {% endfor %}
+    </table>
+{% else %}
+    <h5 class="alert alert-danger">No data found</h5>
+{% endif %}
+<a href="{% url 'add_student' %}"class="btn btn-success btn-sm">Go to Home</a>
+</div>
+{% endblock %}
