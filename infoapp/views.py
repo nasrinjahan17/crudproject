@@ -49,6 +49,3 @@ def delete_info(request,id):
     Student.objects.get(pk=id).delete()
     return HttpResponseRedirect('/student_info/')
    
-
-# name:nasrin
-# pass:nasrin123
